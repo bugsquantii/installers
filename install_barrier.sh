@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt install barrier
+sudo apt install barrier -y

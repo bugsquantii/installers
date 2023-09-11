@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt install arc-theme
+sudo apt install arc-theme -y
