@@ -19,3 +19,4 @@ flatpak install --user app/com.belmoussaoui.Decoder/x86_64/stable
 flatpak install --user app/md.obsidian.Obsidian/x86_64/stable
 flatpak install flathub app.moosync.moosync
 flatpak install flathub net.ankiweb.Anki
+flatpak install flathub io.github.seadve.Mousai
