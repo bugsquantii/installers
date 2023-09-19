@@ -17,6 +17,7 @@ flatpak install --user app/com.github.PintaProject.Pinta/x86_64/stable
 flatpak install --user app/org.blender.Blender/x86_64/stable
 flatpak install --user app/com.belmoussaoui.Decoder/x86_64/stable
 flatpak install --user app/md.obsidian.Obsidian/x86_64/stable
+flatpak install --user org.firestormviewer.FirestormViewer
 flatpak install flathub app.moosync.moosync
 flatpak install flathub net.ankiweb.Anki
 flatpak install flathub io.github.seadve.Mousai
