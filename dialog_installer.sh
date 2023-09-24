@@ -1,16 +1,29 @@
 #!/bin/bash
 
-#Check if dialog is installed
+# Check if dialog is installed
 if ! [ -x "$(command -v dialog)" ]; then
   echo 'Error: dialog is not installed.' >&2
   echo 'Installing dialog...'
   sudo apt install dialog -y
 fi
 
-sudo apt install dialog -y
+# Create a dialog menu to select the system (Raspberry Pi or Debian Sid)
+target_system=$(dialog --menu "Select system:" 10 40 2 1 "Raspberry Pi" 2 "Debian Sid" --stdout)
 
-#Get all file names in the current directory and save them in an array
-files=(*.sh)
+# Determine the installation folder based on the selected system
+if [ "$target_system" == "1" ]; then
+  # Raspberry Pi
+  installation_folder="pi_raspbian_installs"
+elif [ "$target_system" == "2" ]; then
+  # Debian Sid
+  installation_folder="debian_sid_installs"
+else
+  echo "Invalid selection. Exiting..."
+  exit 1
+fi
+
+# Get all file names in the selected installation folder
+files=("$installation_folder"/*.sh)
 
 #remove install_dialog.sh from the array
 files=(${files[@]/install_dialog.sh})
@@ -27,41 +40,32 @@ files=(${files[@]/install_/})
 #remove .sh from all files in the array
 files=(${files[@]/.sh/})
 
-echo ${files[@]}
+#remove debian_sid_installs/ from all files in the array
+files=(${files[@]/$installation_folder\//})
 
-#Create a selectable list of all files in the array as dialog options
-options=() #declare an empty array
-for i in "${files[@]}"; do
+#remove pi_raspbian_installs/ from all files in the array
+files=(${files[@]/$installation_folder\//})
 
-    options+=($i "$i" off) #add each element as an option
 
+
+
+# Remove file extension and folder path
+options=()
+for file in "${files[@]}"; do
+  filename=$(basename "$file")
+  options+=("$filename" "$filename" off)
 done
 
-#Sort the options array alphabetically
-#IFS=$'\n' options=($(sort <<<"${options[*]}"))
-#unset IFS
-
-
-
-
-#Create a dialog with the selectable list of files
-#dialog --checklist "Select the programs you want to install:" 20 40 10 "${options[@]}" 2>results
-#Large dialog box
+# Create a dialog with the selectable list of files
 dialog --checklist "Select the programs you want to install:" 40 80 10 "${options[@]}" 2>results
 
-#Read the results of the dialog into an array
+# Read the results of the dialog into an array
 results=($(<results))
 
-#Loop through the results array and run the corresponding install script
-for i in "${results[@]}"; do
-    echo "Installing $i"
-    ./install_$i.sh
+# Loop through the results array and run the corresponding install script
+for result in "${results[@]}"; do
+  echo "Installing $result"
+  "./$installation_folder/install_$result.sh"
 done
 
 rm results
-
-
-
-
-
-
