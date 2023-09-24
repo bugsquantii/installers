@@ -1,4 +1,6 @@
-![Example Dialog](https://github.com/noobiiii/Installers/raw/master/img/dialog_installer.png)
+![Example Dialog](https://github.com/noobiiii/Installers/raw/master/img/dialog_installer_1.png)
+
+![Example Dialog](https://github.com/noobiiii/Installers/raw/master/img/dialog_installer_0.png)
 
 # Debian Installer Script
 
