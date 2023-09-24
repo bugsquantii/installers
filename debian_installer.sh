@@ -33,3 +33,4 @@ else
     echo "The 'dialog_installer.sh' file could not be found or executed."
     exit 1
 fi
+
