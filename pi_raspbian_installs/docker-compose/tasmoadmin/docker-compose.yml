@@ -6,4 +6,4 @@ services:
         ports:
             - '80:80'
         container_name: tasmoadmin
-        image: 'ghcr.io/tasmoadmin/tasmoadmin:latest
+        image: 'ghcr.io/tasmoadmin/tasmoadmin:latest'
