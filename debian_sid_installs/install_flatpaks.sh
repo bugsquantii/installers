@@ -21,3 +21,4 @@ flatpak install --user org.firestormviewer.FirestormViewer
 flatpak install flathub app.moosync.moosync
 flatpak install flathub net.ankiweb.Anki
 flatpak install flathub io.github.seadve.Mousai
+flatpak install flathub im.riot.Riot
