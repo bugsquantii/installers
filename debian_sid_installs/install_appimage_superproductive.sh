@@ -2,6 +2,12 @@
 
 mkdir -p ~/AppImages
 
+if ! command -v fuse &> /dev/null
+then
+    echo "fuse could not be found"
+    sudo apt install fuse -y
+fi
+
 wget -O ~/AppImages/superProductivity.AppImage 'https://github.com/johannesjo/super-productivity/releases/download/v7.14.3/superProductivity-7.14.3.AppImage'
 
 chmod +x ~/AppImages/superProductivity.AppImage

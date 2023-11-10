@@ -1,5 +1,12 @@
 #!/bin/bash
+
 mkdir -p ~/AppImages
+
+if ! command -v fuse &> /dev/null
+then
+    echo "fuse could not be found"
+    sudo apt install fuse -y
+fi
 
 wget -O ~/AppImages/mqttExplorer.AppImage 'https://github.com/thomasnordquist/MQTT-Explorer/releases/download/0.0.0-0.4.0-beta1/MQTT-Explorer-0.4.0-beta1.AppImage'
 

@@ -2,6 +2,12 @@
 #Install info from:
 #https://espanso.org/docs/install/linux/
 
+if ! command -v fuse &> /dev/null
+then
+    echo "fuse could not be found"
+    sudo apt install fuse -y
+fi
+
 # Create the $HOME/opt destination folder
 mkdir -p ~/opt
 # Download the AppImage inside it
